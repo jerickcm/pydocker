@@ -1,0 +1,18 @@
+FROM node:18
+
+# Use corepack to enable pnpm in a clean way
+RUN corepack enable && corepack prepare pnpm@latest --activate
+
+WORKDIR /app
+
+# Copy only lockfile and package.json first for cache
+COPY ./package.json ./pnpm-lock.yaml ./
+
+# Install dependencies before full copy
+RUN pnpm install
+
+# Copy the rest of your frontend app
+COPY . .
+
+EXPOSE 3000
+CMD ["pnpm", "dev"]
