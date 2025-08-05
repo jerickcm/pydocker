@@ -16,3 +16,15 @@ terminal:% cd ..
 add starting code project for python backend folder
 
 docker compose run backend django-admin startproject site1 .
+
+backend is the service name 
+
+docker-compose exec backend python manage.py makemigrations
+
+docker-compose exec backend python manage.py migrate
+
+
+docker-compose exec backend python manage.py startapp users
+
+
+python manage.py startapp users - startup is a python command 
